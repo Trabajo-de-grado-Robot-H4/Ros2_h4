@@ -16,7 +16,7 @@ RoBPin = 20
 """ VARIABLES """
 
 gain=360/(11*34)
-grados=0
+grados=0.0
 count=0
 
 """ SETUP """
@@ -58,7 +58,7 @@ class MinimalPublisher(Node):
     def timer_callback(self):
         global grados
         msg = Sens()                                           # CHANGE
-        msg.sens1 = 0.1                                      # CHANGE
+        msg.sens1 = grados                                      # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
