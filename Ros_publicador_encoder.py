@@ -8,12 +8,6 @@ from rclpy.node import Node      # DATOS POINT
 from nuevas_interfaces.msg import Sens
 import RPi.GPIO as GPIO                    # COMUNICACIÓN GPIO
 import time                                # TIEMPO
-
-""" OBJETOS """
-
-Enc=Point()                                # OBJETO POINT
-rospy.init_node('talker1', anonymous=True) # OBJETO NODO
-
 """ PINES ENCODER """
 
 RoAPin = 21
@@ -53,21 +47,36 @@ def destroy():
         GPIO.cleanup()
 
 """ PUBLICADOR """
+class MinimalPublisher(Node):
 
-def talker():
-    pub = rospy.Publisher('Encoder1', Point, queue_size=1000)
-    rate = rospy.Rate(50)                                     # 50hz
-    while not rospy.is_shutdown():
-        Enc.x=grados
-        pub.publish(Enc)
-        rate.sleep()
+    def __init__(self):
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(Sens, 'topic', 10)     # CHANGE
+        timer_period = 0.5
+        self.timer = self.create_timer(timer_period, self.timer_callback)
 
+    def timer_callback(self):
+        global grados
+        msg = Sens()                                           # CHANGE
+        msg.sens1 = grados                                      # CHANGE
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    minimal_publisher = MinimalPublisher()
+
+    rclpy.spin(minimal_publisher)
+
+    minimal_publisher.destroy_node()
+    rclpy.shutdown()
 """ PRINCIPAL """
 
 if __name__ == '__main__':
     setup()
     try:
-        talker()
+        main()
     except rospy.ROSInterruptException:
         destroy()
         pass
