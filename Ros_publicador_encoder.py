@@ -21,12 +21,13 @@ grados=0.0
 count=0
 
 """ SETUP """
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(RoAPin, GPIO.IN)
+GPIO.setup(RoBPin, GPIO.IN)
+GPIO.add_event_detect(RoAPin, GPIO.FALLING, callback=callbackEncoder)
 
 def setup():
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(RoAPin, GPIO.IN)
-    GPIO.setup(RoBPin, GPIO.IN)
-    GPIO.add_event_detect(RoAPin, GPIO.FALLING, callback=callbackEncoder)
+
 
 """ INTERRUPCIÓN ENCODERS """
 
@@ -58,7 +59,6 @@ class MinimalPublisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):
-        setup()
         global grados
         msg = Sens()                                           # CHANGE
         msg.sens1 = grados                                      # CHANGE
