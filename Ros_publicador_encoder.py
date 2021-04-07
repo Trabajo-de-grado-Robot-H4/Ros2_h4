@@ -76,8 +76,9 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    setup()
+
     try:
+        setup()
         main()
     except rospy.ROSInterruptException:
         destroy()
