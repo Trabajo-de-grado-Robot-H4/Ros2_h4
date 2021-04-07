@@ -8,6 +8,7 @@ from rclpy.node import Node      # DATOS POINT
 from nuevas_interfaces.msg import Sens
 import RPi.GPIO as GPIO                    # COMUNICACIÓN GPIO
 import time                                # TIEMPO
+
 """ PINES ENCODER """
 
 RoAPin = 21
@@ -40,6 +41,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
+     print('Entré')
 
 """ LIMPIEZA PINES """
 
