@@ -21,12 +21,12 @@ grados=0.0
 count=0
 
 """ SETUP """
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(RoAPin, GPIO.IN)
-GPIO.setup(RoBPin, GPIO.IN)
-GPIO.add_event_detect(RoAPin, GPIO.FALLING, callback=callbackEncoder)
 
-#def setup():
+def setup():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(RoAPin, GPIO.IN)
+    GPIO.setup(RoBPin, GPIO.IN)
+    GPIO.add_event_detect(RoAPin, GPIO.FALLING, callback=callbackEncoder)
 
 
 """ INTERRUPCIÓN ENCODERS """
@@ -77,7 +77,7 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    #setup()
+    setup()
     try:
         main()
     except rospy.ROSInterruptException:
