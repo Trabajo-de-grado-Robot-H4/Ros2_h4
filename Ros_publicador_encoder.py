@@ -58,7 +58,7 @@ class MinimalPublisher(Node):
     def timer_callback(self):
         global grados
         msg = Sens()                                           # CHANGE
-        msg.sens1 = grados                                      # CHANGE
+        msg.sens1 = 0                                      # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
