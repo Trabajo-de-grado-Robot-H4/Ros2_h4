@@ -58,6 +58,7 @@ class MinimalPublisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback(self):
+        setup()
         global grados
         msg = Sens()                                           # CHANGE
         msg.sens1 = grados                                      # CHANGE
@@ -76,9 +77,8 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-
+    setup()
     try:
-        setup()
         main()
     except rospy.ROSInterruptException:
         destroy()
