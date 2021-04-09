@@ -85,6 +85,5 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    try:
-        main()
+    main()
     
