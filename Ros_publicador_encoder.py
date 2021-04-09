@@ -68,12 +68,13 @@ class MinimalPublisher(Node):
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
 def main(args=None):
+    global grados
     setup()
     
     #print (grados)
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher(0)
+    minimal_publisher = MinimalPublisher(0.0)
 
     rclpy.spin(minimal_publisher)
 
