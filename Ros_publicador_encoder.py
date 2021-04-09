@@ -69,11 +69,11 @@ class MinimalPublisher(Node):
 
 def main(args=None):
     setup()
-    global grados 
+    
     #print (grados)
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher(grados)
+    minimal_publisher = MinimalPublisher(0)
 
     rclpy.spin(minimal_publisher)
 
