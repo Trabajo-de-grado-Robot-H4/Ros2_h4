@@ -54,7 +54,7 @@ def destroy():
 
 class MinimalPublisher(Node):
 
-    def __init__(self):
+    def __init__(self,grados):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
         #timer_period = 0.5
