@@ -68,6 +68,7 @@ class MinimalPublisher(Node):
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
 def main(args=None):
+    setup()
     global grados 
     rclpy.init(args=args)
 
@@ -80,7 +81,7 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    setup()
+    
     try:
         main()
     except rospy.ROSInterruptException:
