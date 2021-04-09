@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     print ('Entré',grados)
+     #print ('Entré',grados)
 
 """ LIMPIEZA PINES """
 
@@ -70,6 +70,7 @@ class MinimalPublisher(Node):
 def main(args=None):
     setup()
     global grados 
+    print (grados)
     rclpy.init(args=args)
 
     minimal_publisher = MinimalPublisher(grados)
