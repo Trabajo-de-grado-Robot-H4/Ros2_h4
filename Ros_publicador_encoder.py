@@ -74,7 +74,7 @@ def main(args=None):
     #print (grados)
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher(0.0)
+    minimal_publisher = MinimalPublisher(grados)
 
     rclpy.spin(minimal_publisher)
 
