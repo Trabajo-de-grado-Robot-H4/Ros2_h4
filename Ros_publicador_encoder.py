@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     print('Entré')
+     print ('Entré')
 
 """ LIMPIEZA PINES """
 
