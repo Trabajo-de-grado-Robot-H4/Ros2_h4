@@ -77,7 +77,7 @@ def main(args=None):
     
     
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback()
+    MinimalPublisher.timer_callback(self)
     rclpy.spin(minimal_publisher)
     print ('Entré',grados)
 
