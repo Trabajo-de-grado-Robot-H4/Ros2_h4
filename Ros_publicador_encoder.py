@@ -58,13 +58,12 @@ class MinimalPublisher(Node):
         #timer_period = 0.5
         #self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=grados
-        self.timer_callback
-        print ('entre',grados)
      
 
-    def timer_callback(self):
+    def timer_callback(self,grados):
+        self.grados=grados
         msg = Sens()                                           # CHANGE
-        msg.sens1 = self.grados                                      # CHANGE
+        msg.sens1 = grados                                      # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
@@ -75,7 +74,8 @@ def main(args=None):
     #print (grados)
     rclpy.init(args=args)
     
-    minimal_publisher = MinimalPublisher(grados)
+    MinimalPublisher.timer_callback(grados)
+    minimal_publisher = MinimalPublisher()
 
     rclpy.spin(minimal_publisher)
     print ('Entré',grados)
