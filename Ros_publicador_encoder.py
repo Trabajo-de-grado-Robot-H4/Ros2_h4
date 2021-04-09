@@ -17,7 +17,7 @@ RoBPin = 20
 """ VARIABLES """
 
 gain=360/(11*34)
-grados=1.0
+grados=0.0
 count=0
 
 """ SETUP """
@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     print ('Entré')
+     print ('Entré',grados)
 
 """ LIMPIEZA PINES """
 
