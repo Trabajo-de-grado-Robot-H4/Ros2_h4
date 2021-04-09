@@ -70,7 +70,7 @@ class MinimalPublisher(Node):
 def main(args=None):
     setup()
     global grados 
-    print (grados)
+    #print (grados)
     rclpy.init(args=args)
 
     minimal_publisher = MinimalPublisher(grados)
@@ -84,6 +84,8 @@ def main(args=None):
 if __name__ == '__main__':
     
     try:
+        global grados 
+        print (grados)
         main()
     except rospy.ROSInterruptException:
         destroy()
