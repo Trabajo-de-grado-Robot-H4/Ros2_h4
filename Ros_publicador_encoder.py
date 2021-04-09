@@ -84,9 +84,5 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
+    main()
     
-    try:
-        main()
-    except rospy.ROSInterruptException:
-        destroy()
-        pass
