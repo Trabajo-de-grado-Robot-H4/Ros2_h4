@@ -59,6 +59,7 @@ class MinimalPublisher(Node):
         #self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=grados
         self.timer_callback
+        print ('entre',grados)
      
 
     def timer_callback(self):
