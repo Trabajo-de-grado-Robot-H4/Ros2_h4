@@ -33,7 +33,7 @@ def setup():
 
 def callbackEncoder(RoAPin):
      global gain
-     grados
+     global grados
      global count
 
      B= GPIO.input(RoBPin)
@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     #print ('Entré',grados)
+     print ('Entré',grados)
      return grados
 """ LIMPIEZA PINES """
 
@@ -84,8 +84,6 @@ def main(args=None):
 if __name__ == '__main__':
     
     try:
-        global grados 
-        print (grados)
         main()
     except rospy.ROSInterruptException:
         destroy()
