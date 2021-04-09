@@ -33,7 +33,7 @@ def setup():
 
 def callbackEncoder(RoAPin):
      global gain
-     global grados
+     grados
      global count
 
      B= GPIO.input(RoBPin)
@@ -43,7 +43,7 @@ def callbackEncoder(RoAPin):
         count=count-1
      grados=count*gain
      #print ('Entré',grados)
-
+     return grados
 """ LIMPIEZA PINES """
 
 def destroy():
