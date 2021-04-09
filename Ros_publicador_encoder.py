@@ -58,7 +58,6 @@ class MinimalPublisher(Node):
         timer_period = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=grados
-        print ('Entré',grados)
         
 
     def timer_callback(self):
@@ -78,6 +77,7 @@ def main(args=None):
     minimal_publisher = MinimalPublisher(grados)
 
     rclpy.spin(minimal_publisher)
+    print ('Entré',grados)
 
     minimal_publisher.destroy_node()
     rclpy.shutdown()
