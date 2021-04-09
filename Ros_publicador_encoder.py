@@ -65,7 +65,7 @@ class MinimalPublisher(Node):
         msg = Sens()                                           # CHANGE
         msg.sens1 = self.grados                                      # CHANGE
         self.publisher_.publish(msg)
-        self.get_logger().inf('Publishing: "%d"' % msg.sens1)  # CHANGE
+        self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
 def main(args=None):
     global grados 
