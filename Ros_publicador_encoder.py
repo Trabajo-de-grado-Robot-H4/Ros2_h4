@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     print ('Entré',grados)
+     #print ('Entré',grados)
      return grados
 """ LIMPIEZA PINES """
 
@@ -58,6 +58,7 @@ class MinimalPublisher(Node):
         timer_period = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=grados
+        print ('Entré',grados)
         
 
     def timer_callback(self):
