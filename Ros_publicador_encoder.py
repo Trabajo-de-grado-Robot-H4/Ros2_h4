@@ -44,48 +44,48 @@ def callbackEncoder(RoAPin):
      grados=count*gain
      #print ('Entré',grados)
      return grados
+
 """ LIMPIEZA PINES """
 
 def destroy():
         GPIO.cleanup()
 
 """ PUBLICADOR """
+
 class MinimalPublisher(Node):
 
-    def __init__(self,grados):
+    def __init__(self):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
         #timer_period = 0.5
         #self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.grados=grados
-        
-     
+        self.grados=0.0
+        print ('Init',self.grados)
 
-    def timer_callback(self):
+    def timer_callback(self,grados):
         
         msg = Sens()                                           # CHANGE
-        msg.sens1 = self.grados                                    # CHANGE
+        msg.sens1 = grados                                    # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
 def main(args=None):
+    
     global grados
-    setup()
-    
-    #print (grados)
     rclpy.init(args=args)
-    
-    
+        
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback(self)
+    MinimalPublisher.timer_callback()
     rclpy.spin(minimal_publisher)
-    print ('Entré',grados)
-
+    print ('Main',grados)
     minimal_publisher.destroy_node()
     rclpy.shutdown()
+    
 """ PRINCIPAL """
 
 if __name__ == '__main__':
+    
+    setup()
     try:
         main()
     except KeyboardInterrupt:
