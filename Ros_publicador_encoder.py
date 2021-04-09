@@ -17,7 +17,7 @@ RoBPin = 20
 """ VARIABLES """
 
 gain=360/(11*34)
-grados=1
+grados=1.0
 count=0
 
 """ SETUP """
