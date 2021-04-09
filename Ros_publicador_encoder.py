@@ -57,11 +57,13 @@ class MinimalPublisher(Node):
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
         timer_period = 0.5
         self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.grados=grados
+        
 
     def timer_callback(self):
-        self.grados=grados
+        
         msg = Sens()                                           # CHANGE
-        msg.sens1 = grados                                      # CHANGE
+        msg.sens1 = self.grados                                      # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().inf('Publishing: "%d"' % msg.sens1)  # CHANGE
 
