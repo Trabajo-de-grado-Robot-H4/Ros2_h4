@@ -52,18 +52,19 @@ def destroy():
 """ PUBLICADOR """
 class MinimalPublisher(Node):
 
-    def __init__(self):
+    def __init__(self,grados):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
         #timer_period = 0.5
         #self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.grados=grados
         
      
 
-    def timer_callback(self,grados):
-        self.grados=grados
+    def timer_callback(self):
+        
         msg = Sens()                                           # CHANGE
-        msg.sens1 = grados                                      # CHANGE
+        msg.sens1 = self.grados                                    # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
 
@@ -74,9 +75,9 @@ def main(args=None):
     #print (grados)
     rclpy.init(args=args)
     
-    MinimalPublisher.timer_callback(grados)
-    minimal_publisher = MinimalPublisher()
-
+    
+    minimal_publisher = MinimalPublisher(grados)
+    MinimalPublisher.timer_callback()
     rclpy.spin(minimal_publisher)
     print ('Entré',grados)
 
@@ -85,5 +86,8 @@ def main(args=None):
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        destroy()
     
