@@ -61,7 +61,7 @@ class MinimalPublisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=0.0
         print ('Init',self.grados)
-
+#cambio
     def timer_callback(self):
         
         print('timer')
