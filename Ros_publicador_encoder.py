@@ -57,8 +57,8 @@ class MinimalPublisher(Node):
     def __init__(self):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
-        timer_period = 0.5
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        #timer_period = 0.5
+        #self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=0.0
         print ('Init',self.grados)
 
