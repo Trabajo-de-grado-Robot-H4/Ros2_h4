@@ -62,7 +62,7 @@ class MinimalPublisher(Node):
         self.grados=0.0
         print ('Init',self.grados)
 
-    def timer_callback(grados):
+    def timer_callback(self,grados):
         
         msg = Sens()                                           # CHANGE
         msg.sens1 = grados                                    # CHANGE
