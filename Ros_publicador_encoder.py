@@ -33,7 +33,6 @@ def setup():
 
 def callbackEncoder(RoAPin):
      global gain
-     global grados
      global count
 
      B= GPIO.input(RoBPin)
