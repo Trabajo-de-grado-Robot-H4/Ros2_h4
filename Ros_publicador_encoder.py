@@ -73,6 +73,10 @@ class MinimalPublisher(Node):
 def main(args=None):
     
     global grados
+    
+    setup()
+    print('Setup')
+    
     rclpy.init(args=args)
     print('main')
     minimal_publisher = MinimalPublisher()
@@ -86,8 +90,7 @@ def main(args=None):
 
 if __name__ == '__main__':
     
-    setup()
-    print('Setup')
+
     try:
         main()
     except KeyboardInterrupt:
