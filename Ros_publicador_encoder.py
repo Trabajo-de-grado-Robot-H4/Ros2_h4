@@ -62,7 +62,7 @@ class MinimalPublisher(Node):
         self.grados=0.0
         print ('Init',self.grados)
 
-    def timer_callback(self,grados):
+    def timer_callback():
         
         print('timer')
         msg = Sens()                                           # CHANGE
@@ -76,7 +76,7 @@ def main(args=None):
     rclpy.init(args=args)
         
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback(grados)
+    MinimalPublisher.timer_callback()
     rclpy.spin(minimal_publisher)
     print ('Main',grados)
     minimal_publisher.destroy_node()
