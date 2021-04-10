@@ -76,7 +76,7 @@ def main(args=None):
     rclpy.init(args=args)
         
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback(args,grados)
+    MinimalPublisher.timer_callback(grados)
     rclpy.spin(minimal_publisher)
     print ('Main',grados)
     minimal_publisher.destroy_node()
