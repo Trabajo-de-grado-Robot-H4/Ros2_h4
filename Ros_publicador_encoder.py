@@ -42,7 +42,7 @@ def callbackEncoder(RoAPin):
      if (B==0):
         count=count-1
      grados=count*gain
-     #print ('Entré',grados)
+     print ('Interrupción ',grados)
      return grados
 
 """ LIMPIEZA PINES """
@@ -62,7 +62,7 @@ class MinimalPublisher(Node):
         self.grados=0.0
         print ('Init',self.grados)
 
-    def timer_callback(self,grados):
+    def timer_callback(grados):
         
         msg = Sens()                                           # CHANGE
         msg.sens1 = grados                                    # CHANGE
@@ -75,7 +75,7 @@ def main(args=None):
     rclpy.init(args=args)
         
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback()
+    MinimalPublisher.timer_callback(grados)
     rclpy.spin(minimal_publisher)
     print ('Main',grados)
     minimal_publisher.destroy_node()
