@@ -74,7 +74,7 @@ def main(args=None):
     
     global grados
     rclpy.init(args=args)
-        
+    print('main')
     minimal_publisher = MinimalPublisher()
     #MinimalPublisher.timer_callback()
     rclpy.spin(minimal_publisher)
