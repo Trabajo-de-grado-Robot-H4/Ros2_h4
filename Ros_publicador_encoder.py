@@ -75,7 +75,7 @@ def main(args=None):
     rclpy.init(args=args)
         
     minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback(grados)
+    MinimalPublisher.timer_callback(args,grados)
     rclpy.spin(minimal_publisher)
     print ('Main',grados)
     minimal_publisher.destroy_node()
@@ -86,6 +86,7 @@ def main(args=None):
 if __name__ == '__main__':
     
     setup()
+    print('Setup')
     try:
         main()
     except KeyboardInterrupt:
