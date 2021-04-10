@@ -54,7 +54,7 @@ def destroy():
 
 class MinimalPublisher(Node):
 
-    def __init__(self,grados):
+    def __init__(self):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
         timer_period = 0.5
@@ -62,7 +62,7 @@ class MinimalPublisher(Node):
         self.grados=0.0
         print ('Init',self.grados)
 
-    def timer_callback():
+    def timer_callback(self):
         
         print('timer')
         msg = Sens()                                           # CHANGE
@@ -75,8 +75,8 @@ def main(args=None):
     global grados
     rclpy.init(args=args)
         
-    minimal_publisher = MinimalPublisher(grados)
-    MinimalPublisher.timer_callback()
+    minimal_publisher = MinimalPublisher()
+    #MinimalPublisher.timer_callback()
     rclpy.spin(minimal_publisher)
     print ('Main',grados)
     minimal_publisher.destroy_node()
