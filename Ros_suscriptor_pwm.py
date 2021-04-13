@@ -1,3 +1,6 @@
+import board
+import busio
+import adafruit_pca9685
 import rclpy
 from rclpy.node import Node
 #from nuevas_interfaces.msg import Sens
