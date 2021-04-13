@@ -5,7 +5,8 @@
 
 import rclpy
 from rclpy.node import Node      # DATOS POINT
-from nuevas_interfaces.msg import Sens
+#from nuevas_interfaces.msg import Sens
+from geometry_msgs.msg import Point
 import RPi.GPIO as GPIO                    # COMUNICACIÓN GPIO
 import time                                # TIEMPO
 
@@ -56,27 +57,27 @@ class MinimalPublisher(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(Sens, 'topic1', 10)     # CHANGE
+        self.publisher_ = self.create_publisher(Point, 'topic1', 10)     # CHANGE
         timer_period = 0.1
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=0.0
         print ('Init',self.grados)
         #otro
     def timer_callback(self):
-        
+
         print('timer')
-        msg = Sens()                                           # CHANGE
-        msg.sens1 = grados                                    # CHANGE
+        msg = Point()                                           # CHANGE
+        msg.x = grados                                    # CHANGE
         self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%d"' % msg.sens1)  # CHANGE
+        self.get_logger().info('Publishing: "%d"' % msg.x)  # CHANGE
 
 def main(args=None):
-    
+
     global grados
-    
+
     setup()
     print('Setup')
-    
+
     rclpy.init(args=args)
     print('main')
     minimal_publisher = MinimalPublisher()
@@ -85,14 +86,13 @@ def main(args=None):
     print ('Main',grados)
     minimal_publisher.destroy_node()
     rclpy.shutdown()
-    
+
 """ PRINCIPAL """
 
 if __name__ == '__main__':
-    
+
 
     try:
         main()
     except KeyboardInterrupt:
         destroy()
-    
