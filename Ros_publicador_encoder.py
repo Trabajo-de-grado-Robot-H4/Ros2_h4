@@ -58,10 +58,10 @@ class MinimalPublisher(Node):
     def __init__(self):
         super().__init__('minimal_publisher')
         self.publisher_ = self.create_publisher(Point, 'topic1', 10)     # CHANGE
-        timer_period = 0.1
+        timer_period = 0.05
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.grados=0.0
-        print ('Init',self.grados)
+        #print ('Init',self.grados)
         #otro
     def timer_callback(self):
 
@@ -69,7 +69,7 @@ class MinimalPublisher(Node):
         msg = Point()                                           # CHANGE
         msg.x = grados                                    # CHANGE
         self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%d"' % msg.x)  # CHANGE
+        #self.get_logger().info('Publishing: "%d"' % msg.x)  # CHANGE
 
 def main(args=None):
 
